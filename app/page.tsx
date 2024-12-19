@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import LoadingIndicator from "@/components/loading-indicator";
+import FileUploader from "@/components/fileUpload";
 
 
 export default function Page() {
@@ -169,6 +170,8 @@ export default function Page() {
               <div className="space-y-4 border-t border-[#5c7cf4] bg-background px-4 py-2 shadow-lg sm:rounded-t-xl sm:border md:py-4">
               <form onSubmit={handleSendMessage}>
                 <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background px-8 sm:rounded-md sm:border sm:px-12">
+                <FileUploader />
+
                   <button
                     type="button"
                     className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-[#5c7cf4] border-input shadow-sm hover:bg-accent hover:text-accent-foreground absolute left-0 top-4 size-8 rounded-full bg-background p-0 sm:left-4"
@@ -176,7 +179,7 @@ export default function Page() {
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" className="size-4">
                       <path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"></path>
                     </svg>
-                    <span className="sr-only">New Chat</span>
+                    <span className="sr-only">Upload file</span>
                   </button>
 
                   <input

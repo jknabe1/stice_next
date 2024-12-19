@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
         <div className="flex items-center">
-        <img src="https://www.stice.ai/media/stice-logo.svg" alt="Stice Logo" className="h-48" />
+          <h1 className='text-3xl'>stice</h1>
         </div>
         <div className="flex items-center justify-end space-x-2">
             <ModeToggle />

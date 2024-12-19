@@ -2,33 +2,15 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
-import { ThemeProvider } from "@/components/theme-providers";
+import { ThemeProvider } from "next-themes";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-
 
 export const viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' }
   ]
-}
-
-function ThemeScript() {
-  return (
-    <script
-      dangerouslySetInnerHTML={{
-        __html: `
-          (function() {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const storedTheme = localStorage.getItem('theme');
-            const theme = storedTheme || (prefersDark ? 'dark' : 'light');
-            document.documentElement.classList.add(theme);
-          })();
-        `,
-      }}
-    />
-  );
-}
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -54,7 +36,6 @@ export default function RootLayout({
     <html lang="en">
       <UserProvider>
         <head>
-        <ThemeScript />
         </head>
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <Header />
