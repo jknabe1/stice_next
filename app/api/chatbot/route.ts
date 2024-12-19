@@ -23,10 +23,13 @@ function loadCSV(filePath: string): Promise<any[]> {
 // Funktion för att välja assistent
 function getAssistantId(input: string): string {
   const assistants = {
-    assistant_1: "asst_H3aOLOyRbc0EtDaCyFlJ9SXH",
-    assistant_2: "asst_qErraLsKdRwbr36EoCxMV4q6",
-    assistant_3: "asst_SzIEcriyFRQmCeVE8mipCmyG",
-    assistant_4: "asst_CatYmZyKf7hDmqvJwcOjxcTH",
+    "assistant_1": "asst_H3aOLOyRbc0EtDaCyFlJ9SXH",
+    "assistant_2": "asst_qErraLsKdRwbr36EoCxMV4q6",
+    "assistant_3": "asst_SzIEcriyFRQmCeVE8mipCmyG",
+    "assistant_4": "asst_CatYmZyKf7hDmqvJwcOjxcTH",
+    "assistant_5": "asst_T4N445YGJfx5gqBk8uQ0hApN",
+    "assistant_6": "asst_9icQL0mbZvTg8J5pDXrYQaek"
+
   };
 
   if (input.includes("arbetsrätt")) return assistants.assistant_1;

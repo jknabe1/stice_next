@@ -52,11 +52,11 @@ export default function Page() {
   };
 
   return (
-      <div className="text-white relative flex h-[calc(100vh_-_theme(spacing.16))] overflow-hidden">
+      <div className="text-black dark:text-white relative flex h-[calc(100vh_-_theme(spacing.16))] overflow-hidden">
         <div className="group w-full overflow-auto pl-0 animate-in duration-300 ease-in-out peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px] bg-muted/50">
         {/* Sidofält - Dölj tills AI genererat svar */}
         {sidebarVisible && (
-          <div className="peer absolute inset-y-0 z-30 border-r bg-muted duration-300 ease-in-out lg:flex lg:w-[250px] xl:w-[300px] h-full flex-col dark:bg-zinc-950">
+          <div className="peer absolute inset-y-0 z-30 border-r border-[#5c7cf4] bg-muted duration-300 ease-in-out lg:flex lg:w-[250px] xl:w-[300px] h-full flex-col dark:bg-zinc-950">
             <div className="flex flex-col h-full">
               <div className="flex items-center justify-between p-4">
                 <h2 className="text-lg font-semibold mb-4">Matching docs</h2>
@@ -68,7 +68,7 @@ export default function Page() {
                   </div>
                 </div>
                 <div className="flex items-center justify-between p-4">
-                © Stice Legal AB 2025
+                  © Stice Legal AB 2025
                 </div>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default function Page() {
           {messages.length === 0 && (
             <div className="pb-[200px] pt-4 md:pt-10">
               <div className="mx-auto max-w-2xl px-4">
-                <div className="flex flex-col gap-2 rounded-lg border bg-background p-8">
+                <div className="flex flex-col gap-2 rounded-lg border border-[#5c7cf4] bg-background p-8">
                   <h1 className="text-lg font-semibold">
                     Welcome to Stice AI
                   </h1>
@@ -106,7 +106,7 @@ export default function Page() {
                     {msg.role === "user" && (
                       <div>
                         <div className="group relative flex items-start md:-ml-12">
-                          <div className="flex size-[24px] shrink-0 select-none items-center justify-center rounded-md border bg-primary text-primary-foreground shadow-sm">
+                          <div className="flex size-[24px] shrink-0 select-none items-center justify-center rounded-md border border-[#5c7cf4] bg-primary text-primary-foreground shadow-sm">
                             <svg
                               fill="currentColor"
                               viewBox="0 0 24 24"
@@ -124,7 +124,7 @@ export default function Page() {
                             </div>
                           </div>
                         </div>
-                        <div data-orientation="horizontal" role="none" className="shrink-0 bg-border h-[1px] w-full my-4"></div>
+                        <div data-orientation="horizontal" role="none" className="shrink-0 bg-border border-[#5c7cf4] h-[1px] w-full my-4"></div>
                       </div>
                     )}
 
@@ -132,7 +132,7 @@ export default function Page() {
                     {msg.role === "stice" && (
                       <div>
                         <div className="group relative flex items-start md:-ml-12">
-                          <div className="flex size-[25px] shrink-0 select-none items-center justify-center rounded-md border bg-background shadow-sm">
+                          <div className="flex size-[25px] shrink-0 select-none items-center justify-center rounded-md border border-[#5c7cf4] bg-background shadow-sm">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 256 256"
@@ -148,7 +148,7 @@ export default function Page() {
                             </ReactMarkdown>
                           </div>
                         </div>
-                        <div data-orientation="horizontal" role="none" className="shrink-0 bg-border h-[1px] w-full my-4"></div>
+                        <div data-orientation="horizontal" role="none" className="shrink-0 bg-border border-[#5c7cf4] h-[1px] w-full my-4"></div>
                       </div>
                     )}
                   </div>
@@ -166,12 +166,12 @@ export default function Page() {
           {/* Inputfält */}
           <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-muted/30 from-0% to-muted/30 to-50% duration-300 ease-in-out animate-in dark:from-background/10 dark:from-10% dark:to-background/80 peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
             <div className="mx-auto sm:max-w-2xl sm:px-4">
-              <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:rounded-t-xl sm:border md:py-4">
+              <div className="space-y-4 border-t border-[#5c7cf4] bg-background px-4 py-2 shadow-lg sm:rounded-t-xl sm:border md:py-4">
               <form onSubmit={handleSendMessage}>
                 <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background px-8 sm:rounded-md sm:border sm:px-12">
                   <button
                     type="button"
-                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input shadow-sm hover:bg-accent hover:text-accent-foreground absolute left-0 top-4 size-8 rounded-full bg-background p-0 sm:left-4"
+                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-[#5c7cf4] border-input shadow-sm hover:bg-accent hover:text-accent-foreground absolute left-0 top-4 size-8 rounded-full bg-background p-0 sm:left-4"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" className="size-4">
                       <path d="M224 128a8 8 0 0 1-8 8h-80v80a8 8 0 0 1-16 0v-80H40a8 8 0 0 1 0-16h80V40a8 8 0 0 1 16 0v80h80a8 8 0 0 1 8 8Z"></path>

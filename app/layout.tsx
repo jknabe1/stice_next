@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-providers";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
+
 
 export const viewport = {
   themeColor: [
@@ -11,6 +13,22 @@ export const viewport = {
   ]
 }
 
+function ThemeScript() {
+  return (
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `
+          (function() {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const storedTheme = localStorage.getItem('theme');
+            const theme = storedTheme || (prefersDark ? 'dark' : 'light');
+            document.documentElement.classList.add(theme);
+          })();
+        `,
+      }}
+    />
+  );
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,19 +52,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header />
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-          <main className="flex flex-col flex-1">
-            {children}
-          </main>
-        </ThemeProvider>
-      </body>
+      <UserProvider>
+        <head>
+        <ThemeScript />
+        </head>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <Header />
+          <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
+            <div suppressHydrationWarning>
+              {typeof window === "undefined" ? null : children}
+            </div>
+              <main className="flex flex-col flex-1">
+                {children}
+              </main>
+          </ThemeProvider>
+        </body>
+      </UserProvider>
     </html>
   );
 }
