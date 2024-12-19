@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { ThemeProvider } from "next-themes";
@@ -11,16 +10,6 @@ export const viewport = {
     { media: '(prefers-color-scheme: dark)', color: 'black' }
   ]
 };
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Stice AI",
@@ -34,21 +23,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <UserProvider>
-        <head>
-        </head>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <Header />
-          <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
-            <div suppressHydrationWarning>
-              {typeof window === "undefined" ? null : children}
-            </div>
-              <main className="flex flex-col flex-1">
-                {children}
-              </main>
-          </ThemeProvider>
+        <body>
+          <UserProvider>
+            <Header />
+              <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange>
+                <div suppressHydrationWarning>
+                  {typeof window === "undefined" ? null : children}
+                </div>
+                <main className="flex flex-col flex-1">
+                  {children}
+                </main>
+              </ThemeProvider>
+          </UserProvider>
         </body>
-      </UserProvider>
     </html>
   );
 }
