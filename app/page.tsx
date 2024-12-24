@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import LoadingIndicator from "@/components/loading-indicator";
 import FileUploader from "@/components/fileUpload";
 import EpmtyChatScreen from "@/components/EpmtyChatScreen";
+import SideBar from "@/components/SideBar";
 
 
 export default function Page() {
@@ -58,23 +59,7 @@ export default function Page() {
         <div className="group w-full overflow-auto pl-0 animate-in duration-300 ease-in-out peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px] bg-muted/50">
         {/* Sidofält - Dölj tills AI genererat svar */}
         {sidebarVisible && (
-          <div className="peer absolute inset-y-0 z-30 border-r border-[#5c7cf4] bg-muted duration-300 ease-in-out lg:flex lg:w-[250px] xl:w-[300px] h-full flex-col dark:bg-zinc-950">
-            <div className="flex flex-col h-full">
-              <div className="flex items-center justify-between p-4">
-                <h2 className="text-lg font-semibold mb-4">Matching docs</h2>
-              </div>
-              <div className="flex flex-1 flex-col overflow-hidden">
-                <div className="flex-1 overflow-auto">
-                  <div className="p-8 text-center">
-                    <p className="text-sm text-muted-foreground">Found 0 matching documents</p>
-                  </div>
-                </div>
-                <div className="flex items-center justify-between p-4">
-                  © Stice Legal AB 2025
-                </div>
-              </div>
-            </div>
-          </div>
+          <SideBar/>
         )}
 
 

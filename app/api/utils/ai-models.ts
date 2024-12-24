@@ -74,4 +74,28 @@ export class AIModel {
         row.rubrik.toLowerCase().includes(message.toLowerCase())
     );
   }
+
+  async analyzeMessage(input: string): Promise<{ finalResponse: string; matchedCases: any[] }> {
+    try {
+      // Steg 1: Analysera frågan med assistent 1
+      let currentInput = `Analysera följande fråga: ${input}`;
+      let assistantOrder = Object.keys(this.assistants);
+
+      for (let i = 0; i < assistantOrder.length; i++) {
+        const assistantId = this.assistants[assistantOrder[i]];
+        console.log(`Processing with ${assistantOrder[i]}...`);
+
+        currentInput = await this.sendPrompt(assistantId, currentInput);
+        console.log(`Output from ${assistantOrder[i]}:`, currentInput);
+      }
+
+      // Steg 2: Filtrera rättsfall från CSV baserat på input
+      const matchedCases = this.filterCases(input);
+
+      return { finalResponse: currentInput, matchedCases };
+    } catch (error) {
+      console.error("Error during analysis:", error);
+      throw new Error("Failed to analyze the message");
+    }
+  }
 }

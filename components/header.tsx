@@ -4,10 +4,10 @@ import Link from 'next/link'
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 border-b border-[#5c7cf4] shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
         <div className="flex items-center">
           <Link href={"/"} className='text-3xl text-[#5c7cf4]'>stice</Link>
-          <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24" aria-hidden="true" className="size-6 text-muted-foreground/50">
+          <svg fill="none" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" viewBox="0 0 24 24" className="size-6 text-muted-foreground/50">
             <path d="M16.88 3.549L7.12 20.451"></path>
           </svg>
           <div className="flex items-center justify-between">

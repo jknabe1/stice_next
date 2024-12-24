@@ -1,16 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
+import { AIModel } from "@/app/api/utils/ai-models";
 
-export async function GET(req: NextRequest) {
-  const { searchParams } = new URL(req.url);
-  const caseId = searchParams.get("caseId") || "Unknown";
+const aiModel = new AIModel(process.env.OPENAI_API_KEY!);
 
-  const caseDetails = {
-    id: caseId,
-    domstol: "HD",
-    avgorande_datum: "2023-01-01",
-    referat_dom: "Exempel på referat.",
-    r_lagrum: "Lagrum info",
-  };
+export async function POST(req: NextRequest) {
+  try {
+    const { caseId } = await req.json();
 
-  return NextResponse.json(caseDetails);
+    if (!caseId) {
+      return NextResponse.json({ error: "No case ID provided" }, { status: 400 });
+    }
+
+    // Hämta case från AI-modellen
+    const caseData = aiModel.getCase(caseId);
+
+    if (!caseData) {
+      return NextResponse.json({ error: "Case not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(caseData);
+  } catch (error) {
+    console.error("Error fetching case:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
 }
